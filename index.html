@@ -18,87 +18,25 @@
       .section-dark { background: rgba(8, 12, 24, 0.98); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
       .neon-text { color: #00f2ff; text-shadow: 0 0 10px rgba(0, 242, 255, 0.5); }
       
-      /* Bar Graphs */
-.bar-container {
-  height: 100%;
-  width: 70px;                 /* was 55px -> more readable */
-  display: flex;
+      /* Bar container height becomes dynamic via --bar */
+.bar-container{
+  height: var(--bar, 60%);
+  width: 70px;
+  display:flex;
   flex-direction: column-reverse;
-  transition: transform 0.3s ease;
   position: relative;
 
   border-radius: 14px;
   overflow: hidden;
-
-  /* Adds contrast vs the dark background */
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.08);
 }
 
-/* Make segments visually distinct (color + subtle glow) */
-.bar-segment-organic {
-  background: linear-gradient(180deg, #00F2FF 0%, #00BBD2 100%);
-  width: 100%;
-  border-radius: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 10px 30px rgba(0,242,255,0.18);
-}
+/* Segment heights become dynamic via --pos --info --oos */
+.bar-segment-organic { height: calc(var(--pos, 70) * 1%); }
+.bar-segment-info    { height: calc(var(--info, 15) * 1%); }
+.bar-segment-oos     { height: calc(var(--oos, 15) * 1%); }
 
-.bar-segment-info {
-  background: linear-gradient(180deg, #4F8BFF 0%, #1E5BFF 100%);
-  width: 100%;
-  border-radius: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 10px 26px rgba(79,139,255,0.16);
-}
-
-.bar-segment-oos {
-  background: linear-gradient(180deg, #F472B6 0%, #EF4444 100%); /* pink->red */
-  width: 100%;
-  border-radius: 0 0 12px 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 10px 26px rgba(239,68,68,0.14);
-}
-
-/* Separators between stacked segments (helps readability on dark UI) */
-.bar-container > div {
-  outline: 1px solid rgba(11,16,32,0.55);
-  outline-offset: -1px;
-}
-
-/* Labels: make them readable on bright segments */
-.segment-value {
-  font-size: 10px;      /* was 9px */
-  font-weight: 900;
-  color: rgba(255,255,255,0.95);
-  text-shadow: 0 1px 6px rgba(0,0,0,0.45);
-}
-.segment-value-dark {
-  color: rgba(11,16,32,0.95);
-  text-shadow: none;
-}
-
-/* Total label: more contrast */
-.bar-label-total {
-  position: absolute;
-  top: -32px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 10px;
-  font-weight: 900;
-  color: white;
-  background: rgba(255,255,255,0.10);
-  border: 1px solid rgba(255,255,255,0.12);
-  padding: 3px 8px;
-  border-radius: 6px;
-  backdrop-filter: blur(8px);
-}
 
 
       /* Donut */
