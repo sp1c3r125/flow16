@@ -279,36 +279,69 @@
     </div>
 
     <script>
-      VANTA.HALO({ el: "#vanta-canvas", mouseControls: true, touchControls: true, baseColor: 0x0b1020, backgroundColor: 0x0b1020, amplitudeFactor: 1.0, size: 1.5 });
+  VANTA.HALO({ el: "#vanta-canvas", mouseControls: true, touchControls: true, baseColor: 0x0b1020, backgroundColor: 0x0b1020, amplitudeFactor: 1.0, size: 1.5 });
 
-      function openModal(id) { document.getElementById(id).style.display = "block"; }
-      function closeModal(id) { document.getElementById(id).style.display = "none"; }
-      window.onclick = function(event) { if (event.target.className === 'modal') { event.target.style.display = "none"; } }
+  function openModal(id) { document.getElementById(id).style.display = "block"; }
+  function closeModal(id) { document.getElementById(id).style.display = "none"; }
+  window.onclick = function(event) { if (event.target.className === 'modal') { event.target.style.display = "none"; } }
 
-      let currentCurrency = 'PHP';
-      const symbols = { PHP: '₱', USD: '$' };
-      const locales = { PHP: 'en-PH', USD: 'en-US' };
+  let currentCurrency = 'PHP';
+  const symbols = { PHP: '₱', USD: '$' };
+  const locales = { PHP: 'en-PH', USD: 'en-US' };
 
-      function setCurrency(type) {
-          currentCurrency = type;
-          document.getElementById('btnPHP').className = `px-8 py-2.5 rounded-lg text-xs font-bold transition-all ${type === 'PHP' ? 'toggle-active' : 'text-zinc-500'}`;
-          document.getElementById('btnUSD').className = `px-8 py-2.5 rounded-lg text-xs font-bold transition-all ${type === 'USD' ? 'toggle-active' : 'text-zinc-500'}`;
-          document.getElementById('currencySymbol').innerText = symbols[type];
-          update();
-      }
+  function setCurrency(type) {
+      currentCurrency = type;
+      document.getElementById('btnPHP').className = `px-8 py-2.5 rounded-lg text-xs font-bold transition-all ${type === 'PHP' ? 'toggle-active' : 'text-zinc-500'}`;
+      document.getElementById('btnUSD').className = `px-8 py-2.5 rounded-lg text-xs font-bold transition-all ${type === 'USD' ? 'toggle-active' : 'text-zinc-500'}`;
+      document.getElementById('currencySymbol').innerText = symbols[type];
+      update();
+  }
 
-      function update() {
-          const l = parseInt(document.getElementById('inputLeads').value);
-          const v = parseInt(document.getElementById('inputValue').value);
-          const fmt = new Intl.NumberFormat(locales[currentCurrency], { style: 'currency', currency: currentCurrency, maximumFractionDigits: 0 });
-          document.getElementById('labelLeads').innerText = l;
-          document.getElementById('labelValue').innerText = fmt.format(v);
-          const leak = (l * v * 0.15 * 0.30) * 12;
-          document.getElementById('resLeak').innerText = fmt.format(leak);
-      }
+  function update() {
+      const l = parseInt(document.getElementById('inputLeads').value);
+      const v = parseInt(document.getElementById('inputValue').value);
+      const fmt = new Intl.NumberFormat(locales[currentCurrency], { style: 'currency', currency: currentCurrency, maximumFractionDigits: 0 });
+      document.getElementById('labelLeads').innerText = l;
+      document.getElementById('labelValue').innerText = fmt.format(v);
+      const leak = (l * v * 0.15 * 0.30) * 12;
+      document.getElementById('resLeak').innerText = fmt.format(leak);
+  }
 
-      document.querySelectorAll('input[type=range]').forEach(i => i.addEventListener('input', update));
-      setCurrency('PHP');
-    </script>
+  /* ✅ ADD THIS: auto-compute bar heights + segment proportions */
+  function initIntentBars({
+    selector = ".bar-container[data-total]",
+    minBarPx = 36,
+    maxBarPx = 110
+  } = {}) {
+    const bars = Array.from(document.querySelectorAll(selector));
+    if (!bars.length) return;
+
+    const totals = bars.map(b => Number(b.dataset.total || 0));
+    const maxTotal = Math.max(...totals, 1);
+
+    bars.forEach(b => {
+      const total = Number(b.dataset.total || 0);
+      const pos  = Number(b.dataset.pos  || 70);
+      const info = Number(b.dataset.info || 15);
+      const oos  = Number(b.dataset.oos  || 15);
+
+      // total height proportional to total
+      const hPx = minBarPx + (total / maxTotal) * (maxBarPx - minBarPx);
+      b.style.height = `${hPx}px`;
+
+      // segment proportions inside each bar
+      b.style.setProperty("--pos", pos);
+      b.style.setProperty("--info", info);
+      b.style.setProperty("--oos", oos);
+    });
+  }
+
+  document.querySelectorAll('input[type=range]').forEach(i => i.addEventListener('input', update));
+  setCurrency('PHP');
+
+  /* ✅ ADD THIS LINE: run bar sizing after everything is on the page */
+  initIntentBars();
+</script>
+
 </body>
 </html>
