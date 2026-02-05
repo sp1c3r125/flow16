@@ -104,8 +104,9 @@
                 <!-- CHART AREA -->
 <div class="lg:col-span-2 section-dark rounded-[2.5rem] p-8 md:p-12 border-accent/10">
   <div class="flex justify-between items-center mb-12">
-    <h5 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Intent Distribution</h5>
-    <div class="flex gap-2 text-[9px] font-bold uppercase">
+    <h5 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Weekly Lead Intent</h5>
+
+    <div class="flex gap-3 text-[9px] font-bold uppercase">
       <span class="flex items-center gap-1">
         <div class="w-2 h-2 rounded-full bg-[#00f2ff]"></div> Positive Intent
       </span>
@@ -119,18 +120,55 @@
   </div>
 
   <div class="h-64 flex items-end justify-between gap-6 px-4 border-b border-white/5">
-    <!-- Positive Intent -->
+    <!-- Week 1 -->
     <div class="w-full flex flex-col items-center">
-      <div
-        class="w-full rounded-xl bg-[#00f2ff] relative overflow-hidden shadow-[0_0_20px_rgba(0,242,255,0.25)]"
-        style="height: 70%;"
-      >
-        <span class="bar-label absolute top-2 left-1/2 -translate-x-1/2 text-[10px] font-bold text-black/80">
-          70%
-        </span>
+      <div class="w-full h-full flex flex-col justify-end rounded-xl overflow-hidden border border-white/5">
+        <div class="w-full bg-zinc-600/80" style="height:15%"></div>
+        <div class="w-full bg-blue-700" style="height:15%"></div>
+        <div class="w-full bg-[#00f2ff] relative" style="height:70%">
+          <span class="bar-label absolute top-2 left-1/2 -translate-x-1/2 text-[10px] font-bold text-black/80">70%</span>
+        </div>
       </div>
-      <p class="text-[9px] text-[#00f2ff] mt-4 uppercase font-bold underline">Positive Intent</p>
+      <p class="text-[9px] text-zinc-500 mt-4 uppercase font-bold">Week 1</p>
     </div>
+
+    <!-- Week 2 -->
+    <div class="w-full flex flex-col items-center">
+      <div class="w-full h-full flex flex-col justify-end rounded-xl overflow-hidden border border-white/5">
+        <div class="w-full bg-zinc-600/80" style="height:15%"></div>
+        <div class="w-full bg-blue-700" style="height:15%"></div>
+        <div class="w-full bg-[#00f2ff] relative" style="height:70%">
+          <span class="bar-label absolute top-2 left-1/2 -translate-x-1/2 text-[10px] font-bold text-black/80">70%</span>
+        </div>
+      </div>
+      <p class="text-[9px] text-zinc-500 mt-4 uppercase font-bold">Week 2</p>
+    </div>
+
+    <!-- Week 3 -->
+    <div class="w-full flex flex-col items-center">
+      <div class="w-full h-full flex flex-col justify-end rounded-xl overflow-hidden border border-white/5">
+        <div class="w-full bg-zinc-600/80" style="height:15%"></div>
+        <div class="w-full bg-blue-700" style="height:15%"></div>
+        <div class="w-full bg-[#00f2ff] relative" style="height:70%">
+          <span class="bar-label absolute top-2 left-1/2 -translate-x-1/2 text-[10px] font-bold text-black/80">70%</span>
+        </div>
+      </div>
+      <p class="text-[9px] text-zinc-500 mt-4 uppercase font-bold">Week 3</p>
+    </div>
+
+    <!-- Current (glow) -->
+    <div class="w-full flex flex-col items-center">
+      <div class="w-full h-full flex flex-col justify-end rounded-xl overflow-hidden border border-white/5 shadow-[0_0_20px_rgba(0,242,255,0.25)]">
+        <div class="w-full bg-zinc-600/80" style="height:15%"></div>
+        <div class="w-full bg-blue-700" style="height:15%"></div>
+        <div class="w-full bg-[#00f2ff] relative" style="height:70%">
+          <span class="bar-label absolute top-2 left-1/2 -translate-x-1/2 text-[10px] font-bold text-black/80">70%</span>
+        </div>
+      </div>
+      <p class="text-[9px] text-[#00f2ff] mt-4 uppercase font-bold underline">Current</p>
+    </div>
+  </div>
+</div>
 
     <!-- Info Seeking -->
     <div class="w-full flex flex-col items-center">
