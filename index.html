@@ -18,7 +18,7 @@
       .section-dark { background: rgba(8, 12, 24, 0.98); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
       .neon-text { color: #00f2ff; text-shadow: 0 0 10px rgba(0, 242, 255, 0.5); }
       
-      /* Bar container height becomes dynamic via --bar */
+     /* Bar container height becomes dynamic via --bar */
 .bar-container{
   height: var(--bar, 60%);
   width: 70px;
@@ -36,6 +36,7 @@
 .bar-segment-organic { height: calc(var(--pos, 70) * 1%); }
 .bar-segment-info    { height: calc(var(--info, 15) * 1%); }
 .bar-segment-oos     { height: calc(var(--oos, 15) * 1%); }
+
 
 
 
@@ -134,63 +135,42 @@
 
   <div class="h-64 flex items-end justify-between gap-10 px-4 border-b border-white/5">
     <!-- WEEK 1 -->
-    <div class="flex flex-col items-center">
-      <div class="bar-container">
-        <span class="bar-label-total">100%</span>
+    <div class="bar-container"
+     data-total="84"
+     data-pos="70"
+     data-info="15"
+     data-oos="15"
+     style="--bar: 45%;">
+  <div class="bar-segment-oos"><span class="segment-value">15%</span></div>
+  <div class="bar-segment-info"><span class="segment-value">15%</span></div>
+  <div class="bar-segment-organic"><span class="segment-value segment-value-dark">70%</span></div>
+</div>
 
-        <!-- Bottom segment -->
-        <div class="bar-segment-oos" style="height:15%">
-          <span class="segment-value">15%</span>
-        </div>
-
-        <!-- Middle segment -->
-        <div class="bar-segment-info" style="height:15%">
-          <span class="segment-value">15%</span>
-        </div>
-
-        <!-- Top segment -->
-        <div class="bar-segment-organic" style="height:70%">
-          <span class="segment-value segment-value-dark">70%</span>
-        </div>
-      </div>
-      <p class="text-[9px] text-zinc-500 mt-4 uppercase font-bold">Week 1</p>
-    </div>
 
     <!-- WEEK 2 -->
-    <div class="flex flex-col items-center">
-      <div class="bar-container">
-        <span class="bar-label-total">100%</span>
-
-        <div class="bar-segment-oos" style="height:15%">
-          <span class="segment-value">15%</span>
-        </div>
-        <div class="bar-segment-info" style="height:15%">
-          <span class="segment-value">15%</span>
-        </div>
-        <div class="bar-segment-organic" style="height:70%">
-          <span class="segment-value segment-value-dark">70%</span>
-        </div>
-      </div>
-      <p class="text-[9px] text-zinc-500 mt-4 uppercase font-bold">Week 2</p>
-    </div>
+    <div class="bar-container"
+     data-total="84"
+     data-pos="70"
+     data-info="15"
+     data-oos="15"
+     style="--bar: 45%;">
+  <div class="bar-segment-oos"><span class="segment-value">15%</span></div>
+  <div class="bar-segment-info"><span class="segment-value">15%</span></div>
+  <div class="bar-segment-organic"><span class="segment-value segment-value-dark">70%</span></div>
+</div>
 
     <!-- WEEK 3 -->
-    <div class="flex flex-col items-center">
-      <div class="bar-container">
-        <span class="bar-label-total">100%</span>
+    <div class="bar-container"
+     data-total="84"
+     data-pos="70"
+     data-info="15"
+     data-oos="15"
+     style="--bar: 45%;">
+  <div class="bar-segment-oos"><span class="segment-value">15%</span></div>
+  <div class="bar-segment-info"><span class="segment-value">15%</span></div>
+  <div class="bar-segment-organic"><span class="segment-value segment-value-dark">70%</span></div>
+</div>
 
-        <div class="bar-segment-oos" style="height:15%">
-          <span class="segment-value">15%</span>
-        </div>
-        <div class="bar-segment-info" style="height:15%">
-          <span class="segment-value">15%</span>
-        </div>
-        <div class="bar-segment-organic" style="height:70%">
-          <span class="segment-value segment-value-dark">70%</span>
-        </div>
-      </div>
-      <p class="text-[9px] text-zinc-500 mt-4 uppercase font-bold">Week 3</p>
-    </div>
 
     <!-- CURRENT (glow) -->
     <div class="flex flex-col items-center">
